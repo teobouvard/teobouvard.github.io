@@ -2,6 +2,8 @@
 layout: null
 ---
 
+User-agent: Googlebot
+Disallow:
+
 User-agent: *
 Disallow: /
-

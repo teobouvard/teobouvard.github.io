@@ -23,12 +23,13 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author info
 author:
- fullname                  : Your Name
- mail                      : your@email.com # change to your e-mail address
- twitter                   : twitter-user-name
- github                    : github-user-name
- youtube                   : youtube-user-name
- # google_analytics          : # 'UA-XXXXXXXX-X'
+ fullname                  : Téo Bouvard
+ mail                      : teobouvard@gmail.com
+ twitter                   : teobouvard
+ github                    : teobouvard
+ youtube                   : teobouvard
+ # instagram                 : teobouvard
+ google_analytics          : UA-146128807-1
  photo                     : "uploads/me.png"
  photo2x                   : "uploads/me2.png"
 
@@ -50,3 +51,14 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+
+# Compress HTML (https://alligator.io/jekyll/compress-html/)
+compress_html:
+  clippings               : all
+  endings                 : all
+  comments                : ["<!-- ", " -->"]
+  blanklines              : true
+  profile                 : false
+  ignore:
+   envs                   : [local]

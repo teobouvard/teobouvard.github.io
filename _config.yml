@@ -14,9 +14,14 @@
 
 title: x
 description: #>- # ignore newlines until "baseurl:"
-  '< > with ❤'
+  < > with ❤	
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+logo_path: "assets/img/dactl.svg"
+
+# Fonts
+font                       : '"Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif'
+load_google_fonts          : 'Rubik:400,400italic,700,700italic'
 
 
 # Author info
@@ -28,8 +33,6 @@ author:
  youtube                   : teobouvard
  # instagram                 : teobouvard
  google_analytics          : UA-146128807-1
- photo                     : "uploads/me.png"
- photo2x                   : "uploads/me2.png"
 
 
 # Build settings

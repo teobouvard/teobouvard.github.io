@@ -17,7 +17,7 @@ description: #>- # ignore newlines until "baseurl:"
   < > with ❤	
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-logo_path: "assets/img/dactl.svg"
+logo_path: "assets/img/logo.svg"
 
 # Fonts
 font                       : '"Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif'

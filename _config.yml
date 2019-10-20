@@ -37,6 +37,7 @@ author:
 
 # Build settings
 markdown: kramdown
+encoding: utf-8
 plugins:
   - jekyll-feed
 

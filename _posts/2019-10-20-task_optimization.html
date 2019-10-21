@@ -13085,7 +13085,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In paragliding competitions, pilots rely on their flight instruments to compute the shortest route to goal. Such a route is defined as being the shortest path intersecting all ordered turnpoints circumferences at least once.
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In paragliding competitions, pilots rely on their flight instruments to compute the shortest route to goal. Such a route is defined as being the shortest path intersecting each turnpoint circumference at least once, in a predefined order.
 Given a current position and a set of remaining turnpoints, the task optimization problem is to find this shortest route and derive its attributes : total distance, consecutive legs distances and optimized points defining the route.</p>
 <h3 id="Note">Note<a class="anchor-link" href="#Note">&#182;</a></h3><p>In the following, I propose a solution to the task optimization problem in two-dimensional Euclidean space, but the result can be applied to any space as long as the distance metric is properly defined. Namely, it can be used in real world task optimizations relying on FAI sphere or WGS84 ellipsoid spaces. A real-world example can be found in <a href="https://github.com/teobouvard/igclib">igclib's repository</a>.</p>
 
@@ -13118,7 +13118,7 @@ Given a current position and a set of remaining turnpoints, the task optimizatio
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The pilot is currently at the point labeled <code>Position</code>. To get to goal, it must first cross all turnpoints circumferences in the predefined order : <code>TP1</code>, <code>TP2</code>, <code>TP3</code>, <code>TP4</code>, and then <code>Goal</code>. We want to compute the shortest path  satisfying the validation of the task, which is the route given below.</p>
+<p>The pilot is currently at the point labeled <code>Position</code>. To reach the goal, it must first cross all turnpoints circumferences in the predefined order : <code>TP1</code>, <code>TP2</code>, <code>TP3</code>, <code>TP4</code>, and then <code>Goal</code>. We want to compute the shortest path  satisfying the validation of the task, which is the route given below.</p>
 
 </div>
 </div>
@@ -13156,14 +13156,16 @@ The optimized point of <code>TP2</code> must lie at the intersection of its circ
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The proposed alternative considers the total distance of the shortest path as an objective function, and minimizes this function using <a href="https://en.wikipedia.org/wiki/Quasi-Newton_method">Quasi-Newton methods</a>. An example implementation is given in Python.</p>
-<p>The objective function $f$ takes 3 $n$-dimensional fixed parameters, $n$ being the number of remaining turnpoints + 1 (we need to add 1 because the pilot's position is a necessarily on the shortest path). These parameters completely define the task : $x$, $y$ representing the center coordinates of each turnpoint (including the current position) and $r$ their radii (current position have a radius of 0, though it doesn't really matter). The variable parameter of this objective function is $\theta$, a $n$-dimensional vector representing the angles from the turnpoints centers, which define the optimized point locations on each turnpoint. The objective function</p>
-<p>If we consider our previous example, we have</p>
-$$ 
+<p>The objective function $f$ takes 3 $n$-dimensional fixed parameters, $n$ being the number of remaining turnpoints + 1 (the pilot's position is a necessarily an optimized point of the shortest path). These parameters completely define the task : $x$ and $y$ vectors represent the center coordinates of each turnpoint (including the current position) and $r$ represents the turpoints radii vector (current position have a radius of 0, though it doesn't really matter). The variable parameter of this objective function is $\theta$, a $n$-dimensional vector representing the angles from the turnpoints centers which define the optimized points locations on each turnpoint.</p>
+<p>If we consider the example given as illustration, we have</p>
+$$
+\quad
 x = \begin{bmatrix} 0 \\ 5 \\ 0 \\ 7 \\ 12 \\ 12 \end{bmatrix} \quad
 y = \begin{bmatrix} 0 \\ 0 \\ 4 \\ 7 \\ 0 \\ 5 \end{bmatrix} \quad 
 r = \begin{bmatrix} 0 \\ 2 \\ 1 \\ 2 \\ 1 \\ 0 \end{bmatrix} \quad
 \theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \theta_2 \\ \theta_3 \\ \theta_4 \\ \theta_5 \end{bmatrix}
-$$<p>And we are looking for the angles $\theta_0, \theta_1 \ldots \theta_n$  such that $f(\theta, x, y, r) = d$ with $d$ being a global minimum of $f$. To do so, we can use a Quasi-Newton method to find the extrema of f.</p>
+\quad
+$$<p>And we are looking for the angles $\theta_0, \theta_1 \ldots \theta_n$  such that $f(\theta, x, y, r) = d$ with $d$ being a global minimum of $f$. To do so, we can use a Quasi-Newton method, which tweaks the $\theta$ coordinates until the computed distance reaches a minima of $f$.</p>
 
 </div>
 </div>
@@ -13201,7 +13203,7 @@ $$<p>And we are looking for the angles $\theta_0, \theta_1 \ldots \theta_n$  suc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">tasklen</span><span class="p">(</span><span class="n">θ</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
@@ -13221,7 +13223,7 @@ $$<p>And we are looking for the angles $\theta_0, \theta_1 \ldots \theta_n$  suc
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We then use <code>scipy</code>'s <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">BFGS solver</a> to compute the minima of our objective function. All angles are in degrees, in range $[-180, 180]$, and relative to the y-axis. The <code>optplot</code> method simply draws the task along with the shortest route, by using the resulting angles to compute the optimized waypoints.</p>
+<p>We use <code>scipy</code>'s <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">BFGS solver</a> to compute the minima of our objective function. All angles are in degrees, in range $[-180, 180]$, relative to the y-axis. The <code>optplot</code> method simply draws the task along with the shortest route, by using the resulting angles to compute the optimized waypoints.</p>
 
 </div>
 </div>
@@ -13357,7 +13359,11 @@ Angles minimizing the objective function : [&#39;0.00&#39;, &#39;-69.05&#39;, &#
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here are a few test cases showing the expected behaviour on identified tricky cases : successive concentric turnpoints, and "direct line".</p>
+<p>Here are a few test cases showing the expected behaviour on tricky cases without any modifications to the algorithm. For the moment, the identified tricky cases are :</p>
+<ul>
+<li>successive concentric turnpoints</li>
+<li>direct line through a turnpoint</li>
+</ul>
 
 </div>
 </div>
@@ -13492,10 +13498,10 @@ Angles minimizing the objective function : [&#39;0.00&#39;, &#39;77.09&#39;, &#3
 <p>However, it may have some flaws:</p>
 <ul>
 <li>if the solver converges towards a local minimum and not a global one, we would have to use <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.basinhopping.html#scipy.optimize.basinhopping">basinhopping</a> to find the global minimum, which is more expensive (such a case hasn't been observed yet)</li>
-<li>though this solution seems to yield acceptable results on small-scale examples, it hasn't been thoroughly tested yet, feel free to play around with it and discover corner cases</li>
+<li>though this solution seems to yield acceptable results on small-scale examples, it hasn't been thoroughly tested yet, so feel free to play around with it and discover corner cases</li>
 </ul>
 <p>This algorithm is going to be used in <a href="https://github.com/teobouvard/igclib">igclib</a>, a tool which will help in the analysis of paragliding competitions. It is a particularly efficient solution in this case because we compute the remaing distance to goal for each pilot at each second of the flight, so the initialization vector trick allows us to have a reasonable performance.
-If you have suggestion, request or if you found a degenerate case, feel free to <a href="https://www.facebook.com/teobouvard/">send me a message</a> or an email.</p>
+If you have any suggestion, request or if you found a degenerate case, feel free to <a href="https://www.facebook.com/teobouvard/">send me a message</a> or an email.</p>
 
 </div>
 </div>

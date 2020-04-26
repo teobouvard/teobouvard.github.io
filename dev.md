@@ -6,6 +6,6 @@ permalink: /dev/
 
 [Making proof of work more useful](https://github.com/teobouvard/freezenet)
 
-[Ray tracing to learn Golang](https://github.com/teobouvard/gotrace)
+[Ray tracing in Golang](https://github.com/teobouvard/gotrace)
 
 [Solving the task optimization problem using Quasi-Newton methods](/2019/10/20/task_optimization.html)

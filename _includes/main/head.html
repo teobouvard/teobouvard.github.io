@@ -1,12 +1,22 @@
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+/>
 
 <title>{{ site.title }}</title>
 
-
-<meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.blog.description }}{% endif %}">
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+<meta
+  name="description"
+  content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.blog.description }}{% endif %}"
+/>
+<link
+  rel="canonical"
+  href="{{ page.url | replace:'index.html','' | prepend: site.url }}"
+/>
+<link rel="shortcut icon" href="{{ "assets/img/favicon.ico" | relative_url }}"
+type="image/x-icon" />
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary" />
@@ -15,22 +25,27 @@
 <meta name="twitter:image" content="{{ site.url }}{{ cover }}" />
 
 <!-- Open Graph -->
-<meta property="og:locale" content="{{ site.lang }}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="{{ title }}">
-<meta property="og:description" content="{{ description }}">
-<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.url }}">
-<meta property="og:site_name" content="{{ site.blog.title }}">
+<meta property="og:locale" content="{{ site.lang }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta
+  property="og:url"
+  content="{{ page.url | replace:'index.html','' | prepend: site.url }}"
+/>
+<meta property="og:site_name" content="{{ site.blog.title }}" />
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{ "assets/vendor/normalize-css/normalize.css" | relative_url }}">
-<link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}">
-
-{% if site.load_google_fonts %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ site.load_google_fonts }}">
+<link rel="stylesheet" href="{{ "assets/vendor/normalize-css/normalize.css" |
+relative_url }}"> <link rel="stylesheet" href="{{ "assets/css/main.css" |
+relative_url }}"> {% if site.load_google_fonts %}
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family={{ site.load_google_fonts }}"
+/>
 <style>
-    html {
-      font-family: {{ site.blog.font }};
-    }
+  html {
+    font-family: {{ site.blog.font }};
+  }
 </style>
 {% endif %}

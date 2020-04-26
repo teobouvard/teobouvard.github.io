@@ -14,26 +14,24 @@
 
 title: x
 description: #>- # ignore newlines until "baseurl:"
-  < > with ❤	
+  so long, and thanks for all the fish
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 logo_path: "assets/img/logo.svg"
 
 # Fonts
-font                       : '"Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif'
-load_google_fonts          : 'Rubik:400,400italic,700,700italic'
-
+font: '"Rubik", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif'
+load_google_fonts: "Rubik:400,400italic,700,700italic"
 
 # Author info
 author:
- fullname                  : Téo Bouvard
- mail                      : teobouvard@gmail.com
- twitter                   : teobvrd
- github                    : teobouvard
- youtube                   : teobouvard
- # instagram                 : teobouvard
- google_analytics          : UA-146128807-1
-
+  fullname: Téo Bouvard
+  mail: teobouvard@gmail.com
+  #twitter: teobvrd
+  github: teobouvard
+  youtube: teobouvard
+  #instagram: teobouvard
+  google_analytics: UA-146128807-1
 
 # Build settings
 markdown: kramdown
@@ -53,13 +51,12 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-
 # Compress HTML (https://alligator.io/jekyll/compress-html/)
 compress_html:
-  clippings               : all
-  endings                 : all
-  comments                : ["<!-- ", " -->"]
-  blanklines              : true
-  profile                 : false
+  clippings: all
+  endings: all
+  comments: ["<!-- ", " -->"]
+  blanklines: true
+  profile: false
   ignore:
-   envs                   : [local]
+    envs: [local]

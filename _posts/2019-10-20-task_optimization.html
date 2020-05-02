@@ -13087,7 +13087,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In paragliding competitions, pilots rely on their flight instruments to compute the shortest route to goal. Such a route is defined as being the shortest path intersecting each turnpoint circumference at least once, in a predefined order.
 Given a current position and a set of remaining turnpoints, the task optimization problem is to find this shortest route and derive its attributes : total distance, consecutive legs distances and optimized points defining the route.</p>
-<h3 id="Note">Note<a class="anchor-link" href="#Note">&#182;</a></h3><p>In the following, I propose a solution to the task optimization problem in two-dimensional Euclidean space, but the result can be applied to any space as long as the distance metric is properly defined. Namely, it can be used in real world task optimizations relying on FAI sphere or WGS84 ellipsoid spaces. A real-world example can be found in <a href="https://github.com/teobouvard/igclib">igclib's repository</a>.</p>
+<h3 id="Note">Note<a class="anchor-link" href="#Note">&#182;</a></h3><p>In the following, I propose a solution to the task optimization problem in two-dimensional Euclidean space, but the result can be applied to any space as long as the distance metric is properly defined. Namely, it can be used in real world task optimizations relying on FAI sphere or WGS84 ellipsoid spaces. A real-world example can be found in <a href="https://github.com/igclib/igclib">igclib's repository</a>.</p>
 
 </div>
 </div>
@@ -13140,7 +13140,7 @@ Given a current position and a set of remaining turnpoints, the task optimizatio
 The optimized point of <code>TP2</code> must lie at the intersection of its circumference and the bisector of the angle formed by the centers of these three turnpoints.</li>
 </ul>
 <p>This geometrical approach yields correct results in the ideal case, where all the turnpoints have distinct centers, and where a valid path going straight to goal does not exist. These two assumptions are quite restrictive, as successive concentric turnpoints are quite common, and the possibility that the shortest path has to go <em>through</em> a turnpoint (thus crossing the circumference of a single turnpoint at two distant points) always exists.</p>
-<p>While it is certainly possible to create a set of rules identifying every corner case, this approach is inneficient by design. When computing the shortest route at each second of the flight, flight instruments have to run the whole geometric algorithm in order to compute the correct path.</p>
+<p>While it is certainly possible to create a set of rules identifying every corner case, it would be tedious and error-prone.</p>
 
 </div>
 </div>
@@ -13222,7 +13222,7 @@ $$<p>And we are looking for the angles $\theta_0, \theta_1 \ldots \theta_n$  suc
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We use <code>scipy</code>'s <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">BFGS solver</a> to compute the minima of our objective function. All angles are in degrees, in range $[-180, 180]$, relative to the y-axis. The <code>optplot</code> method simply draws the task along with the shortest route, by using the resulting angles to compute the optimized waypoints.</p>
+<p>We use <code>scipy</code>'s <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize">BFGS solver</a> to compute the minima of our objective function. All angles are in degrees, in range $[-180, 180]$, relative to the north direction of the y-axis. The <code>optplot</code> method simply draws the task along with the shortest route, by using the resulting angles to compute the optimized waypoints.</p>
 
 </div>
 </div>
@@ -13499,7 +13499,7 @@ Angles minimizing the objective function : [&#39;0.00&#39;, &#39;77.09&#39;, &#3
 <li>if the solver converges towards a local minimum and not a global one, we would have to use <a href="https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.basinhopping.html#scipy.optimize.basinhopping">basinhopping</a> to find the global minimum, which is more expensive (such a case hasn't been observed yet)</li>
 <li>though this solution seems to yield acceptable results on small-scale examples, it hasn't been thoroughly tested yet, so feel free to play around with it and discover corner cases</li>
 </ul>
-<p>This algorithm is going to be used in <a href="https://github.com/teobouvard/igclib">igclib</a>, a tool which will help in the analysis of paragliding competitions. It is a particularly efficient solution in this case because we compute the remaing distance to goal for each pilot at each second of the flight, so the initialization vector trick allows us to have a reasonable performance.
+<p>This algorithm is going to be used in <a href="https://github.com/teobouvard/igclib">igclib</a>, a tool which will help in the analysis of paragliding competitions. It is a particularly efficient solution in this use case because we compute the remaing distance to goal for each pilot at each second of the flight, so the initialization vector trick allows us to have a reasonable performance.
 If you have any suggestion, request or if you found a degenerate case, feel free to <a href="https://www.facebook.com/teobouvard/">send me a message</a> or an email.</p>
 
 </div>
@@ -13508,7 +13508,7 @@ If you have any suggestion, request or if you found a degenerate case, feel free
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-this-code">Use this code<a class="anchor-link" href="#Use-this-code">&#182;</a></h2><p>All the above code is licensed under the GNU General Public License v3 (GPL-3), which means you can use it for all purposes, as long as you disclose the source (<em>wink wink</em> @ XCTrack developpers).</p>
+<h2 id="Use-this-code">Use this code<a class="anchor-link" href="#Use-this-code">&#182;</a></h2><p>All the above code is licensed under the GNU General Public License v3, which means you can use it for all purposes, as long as you disclose the source (<em>wink wink</em> @ XCTrack developpers).</p>
 
 </div>
 </div>

@@ -6,8 +6,8 @@
 hugo server --buildDrafts
 ```
 
-* Create new entry
+* Create new post
 
-```
-hugo new posts/entry/index.md
+```console
+hugo new posts/post-name/index.md
 ```

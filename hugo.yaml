@@ -1,0 +1,40 @@
+baseURL: https://teobouvard.github.io/
+languageCode: en-us
+title: x
+copyright: Téo Bouvard
+
+markup:
+  highlight:
+    # Required for Chroma and the custom syntax highlighting.
+    noClasses: false
+
+params:
+  centerTheme: true
+  showMenuItems: 2
+  readingTime: true
+  Toc: true
+  showLanguageSelector: true
+  contentTypeName: posts
+  footerText: so long, and thanks for all the fish
+  logo:
+    logoText: x
+    logoHomeLink: /
+
+languages:
+  en:
+    languageName: English
+    subtitle: ""
+    keywords: ""
+    params:
+      readOtherPosts: Read other posts
+      menuMore: Show more
+      readMore: Read more
+    menu:
+      main:
+        - identifier: about
+          name: About
+          url: /about
+
+module:
+  imports:
+    - path: github.com/panr/hugo-theme-terminal/v4

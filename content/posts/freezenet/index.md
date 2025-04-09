@@ -2,6 +2,8 @@
 date: '2020-04-21'
 title: Freezenet
 summary: Making Proof-of-Work more useful.
+tags:
+  - software
 ---
 
 # FreezeNet

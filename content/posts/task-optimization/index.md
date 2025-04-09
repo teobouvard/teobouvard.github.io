@@ -1,11 +1,12 @@
-+++
-date = "2019-10-20"
-title = "Task Optimization"
-author = "Téo"
-katex = true
-tags = ["paragliding", "software"]
-cover = "task_example.png"
-+++
+---
+date: "2019-10-20"
+title: Task Optimization
+summary: Solving the task optimization problem using quasi-Newton methods.
+katex: true
+tags:
+  - paragliding
+  - software
+---
 
 # Solving the task optimization problem using quasi-Newton methods
 

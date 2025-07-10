@@ -1,6 +1,5 @@
 ---
 date: 2025-07-10T19:03:15+02:00
-draft: true
 title: Announcing Syrac
 summary: A paragliding time-attack platform.
 tags:
@@ -12,6 +11,8 @@ tags:
 # TL;DR
 
 Head to [app.syrac.org](https://app.syrac.org), complete tasks you like, and see how high you can climb on the leaderboards.
+
+{{< image src="interlaken_t3.png" alt="Syrac task screenshot" position="center" style="border-radius: 4px;" >}}
 
 # Permanent tasks are great
 
@@ -42,6 +43,8 @@ That's why I've been building [Syrac](https://app.syrac.org), a platform where y
 * *Share your own tasks* and build a community around your local site
 
 The [rules](https://docs.syrac.org/rules) explain in more detail how to participate.
+
+{{< image src="explore_map.png" alt="Syrac explore map screenshot" position="center" style="border-radius: 4px;" >}}
 
 # What's next
 

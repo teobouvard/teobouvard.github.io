@@ -6,13 +6,12 @@ tags:
   - syrac
   - paragliding
   - software
+cover: interlaken_t3.png
 ---
 
 # TL;DR
 
 Head to [app.syrac.org](https://app.syrac.org), complete tasks you like, and see how high you can climb on the leaderboards.
-
-{{< image src="interlaken_t3.png" alt="Syrac task screenshot" position="center" style="border-radius: 4px;" >}}
 
 # Permanent tasks are great
 

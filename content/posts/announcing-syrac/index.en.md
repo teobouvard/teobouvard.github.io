@@ -37,9 +37,9 @@ There's no place to find interesting tasks or compare your times with pilots wor
 
 That's why I've been building [Syrac](https://app.syrac.org), a platform where you can:
 
-* *Discover tasks* from flying sites around the world
-* *Compete* on leaderboards with other pilots
-* *Share your own tasks* and build a community around your local site
+* **Discover tasks** from flying sites around the world
+* **Compete** on leaderboards with other pilots
+* **Share your own tasks** and build a community around your local site
 
 The [rules](https://docs.syrac.org/rules) explain in more detail how to participate.
 

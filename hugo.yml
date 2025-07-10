@@ -37,6 +37,10 @@ languages:
         - identifier: flightlog
           name: Flightlog
           url: /flightlog
+  fr:
+    languageName: Français
+    subtitle: ""
+    keywords: ""
 
 module:
   imports:

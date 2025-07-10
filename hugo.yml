@@ -13,7 +13,7 @@ params:
   showMenuItems: 2
   readingTime: true
   Toc: true
-  showLanguageSelector: true
+  showLanguageSelector: false
   contentTypeName: posts
   footerText: so long, and thanks for all the fish
   logo:

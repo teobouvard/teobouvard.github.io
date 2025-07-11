@@ -1,7 +1,7 @@
 ---
-date: 2025-07-10T19:03:15+02:00
+date: 2025-07-11T19:03:15+02:00
 title: Announcing Syrac
-summary: A paragliding time-attack platform.
+summary: A paragliding time attack platform.
 tags:
   - syrac
   - paragliding
